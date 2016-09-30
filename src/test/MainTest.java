@@ -1,4 +1,7 @@
 import org.junit.Test;
+
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
 
 /**
@@ -20,5 +23,22 @@ public class MainTest {
         user = User.searchUser("Bob");
 
         assertTrue(user.getName().equals("Bob"));
+    }
+
+        @Test
+        public void testItemSearch() {
+            User user = new User("Bob", "password");
+            ArrayList<Item> items = new ArrayList<>();
+            items.add(new Food("Coconut", 5));
+            items.add(new Food("Banana", 10));
+            items.add(new Food("Apple", 3));
+            items.add(new Food("Beer", 2));
+            user.setInventory(items);
+
+            Item item = Item.searchItem(user.getInventory(), "Coconut");
+
+            assertTrue(item.getCategory().equals("Food"));
+            assertTrue(item.getName().equals("Coconut"));
+            assertTrue(item.getQuantity() == 5);
     }
 }

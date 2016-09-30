@@ -50,6 +50,15 @@ public class Item {
         return null;
     }
 
+    public static Item searchItem(ArrayList<Item> inventory, String itemName) {
+        for (Item item : inventory) {
+            if (itemName.equalsIgnoreCase(item.getName())){
+                return item;
+            }
+        }
+        return null;
+    }
+
     public static String retrieveItemName(ArrayList<Item> inventory) {
         String itemName = Validation.validateString();
         for (Item item : inventory) {
